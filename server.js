@@ -1,4 +1,5 @@
 import 'express-async-errors'
+import cors from 'cors'
 import express from 'express'
 
 import connectDB from './db/connect.js'
@@ -14,10 +15,11 @@ dotenv.config()
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Welcome!')
+app.get('/api/v1', (req, res) => {
+    res.json({ msg: 'Welcome!' })
 })
 
 app.use('/api/v1/auth', authRouter)
