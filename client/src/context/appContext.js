@@ -19,7 +19,9 @@ import {
     CLEAR_VALUES,
     CREATE_JOB_BEGIN,
     CREATE_JOB_ERROR,
-    CREATE_JOB_SUCCESS
+    CREATE_JOB_SUCCESS,
+    GET_JOBS_BEGIN,
+    GET_JOBS_SUCCESS
 } from './actions'
 
 const user = localStorage.getItem('user')
@@ -198,6 +200,30 @@ function AppProvider({ children }) {
         clearAlert()
     }
 
+    const getJobs = async () => {
+        const url = `/jobs`
+
+        dispatch({ type: GET_JOBS_BEGIN })
+        try {
+            const { data } = await authFetch.get(url)
+            const { jobs, totalJobs, numOfPages } = data
+
+            dispatch({
+                type: GET_JOBS_SUCCESS,
+                payload: {
+                    jobs,
+                    totalJobs,
+                    numOfPages
+                }
+            })
+        } catch (error) {
+            console.log(error)
+            // logoutUser()
+        }
+
+        clearAlert()
+    }
+
     return (
         <AppContext.Provider 
             value={{ 
@@ -210,7 +236,8 @@ function AppProvider({ children }) {
                 updateUser, 
                 handleChange,
                 clearValues,
-                createJob
+                createJob,
+                getJobs
             }} 
         >
             { children }
