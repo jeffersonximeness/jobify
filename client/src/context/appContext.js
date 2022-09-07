@@ -26,7 +26,9 @@ import {
     DELETE_JOB_BEGIN,
     EDIT_JOB_BEGIN,
     EDIT_JOB_ERROR,
-    EDIT_JOB_SUCCESS
+    EDIT_JOB_SUCCESS,
+    SHOW_STATS_BEGIN,
+    SHOW_STATS_SUCCESS
 } from './actions'
 
 const user = localStorage.getItem('user')
@@ -55,6 +57,8 @@ const initialState = {
     totalJobs: 0,
     page: 1,
     numOfPages: 1,
+    stats: {},
+    monthlyApplications: []
 }
 
 const AppContext = React.createContext()
@@ -269,6 +273,27 @@ function AppProvider({ children }) {
         }
     }
 
+    const showStats = async () => {
+        dispatch({ type: SHOW_STATS_BEGIN })
+
+        try {
+            const { data } = await authFetch.get('/jobs/stats')
+            
+            dispatch({ 
+                type: SHOW_STATS_SUCCESS,
+                payload: {
+                    stats: data.defaultStats,
+                    monthlyApplications: data.monthlyApplications
+                } 
+            })
+
+        } catch (error) {
+            console.log(error.response)
+            logoutUser()
+        }
+        clearAlert()
+    }
+
     return (
         <AppContext.Provider 
             value={{ 
@@ -285,7 +310,8 @@ function AppProvider({ children }) {
                 getJobs,
                 setEditJob,
                 deleteJob,
-                editJob
+                editJob,
+                showStats
             }} 
         >
             { children }
