@@ -19,9 +19,7 @@ function Landing() {
                         job <span>tracking</span> app
                     </h1>
                     <p>
-                        I'm baby same man braid man bun mumblecore. 
-                        Photo booth keffiyeh affogato chartreuse food truck mixtape. 
-                        Pinterest prism four dollar toast, wayfarers mustache brunch etsy.
+                        A platform for you launch your job vacancies and manage them in a simple way!
                     </p>
                     <Link to='/register' className='btn btn-hero'>
                         Login/Register
