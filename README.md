@@ -9,12 +9,12 @@
 <ul>
   <li><a href="https://reactjs.org/">React</a></li>
   <li><a href="https://nodejs.org/en/">Node</a></li>
-  <li><a href="https://nodejs.org/en/">Express</a></li>
-  <li><a href="https://nodejs.org/en/">MongoDB</a></li>
-  <li><a href="https://nodejs.org/en/">Axios</a></li>
-  <li><a href="https://nodejs.org/en/">JWT (Json Web Token)</a></li>
-  <li><a href="https://nodejs.org/en/">React router dom</a></li>
-  <li><a href="https://nodejs.org/en/">Context API</a></li>
+  <li><a href="https://expressjs.com/pt-br">Express</a></li>
+  <li><a href="https://www.mongodb.com/pt-br">MongoDB</a></li>
+  <li><a href="https://axios-http.com/ptbr/docs/intro">Axios</a></li>
+  <li><a href="https://jwt.io/">JWT (Json Web Token)</a></li>
+  <li><a href="https://v5.reactrouter.com/web/guides/quick-start">React router dom</a></li>
+  <li><a href="https://pt-br.reactjs.org/docs/context.html">Context API</a></li>
 </ul>
 <br/>
 
